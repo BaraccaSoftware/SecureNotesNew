@@ -18,7 +18,9 @@
     <string name="freeze_activity">Inserimento Disabilitato</string>
     <string name="hint_edtx">password…</string>
     <string name="empty_input_field">Bisogna inserire una Password</string>
-
+	<string name="login_text">Accedi</string>
+	<string name="register_new_user">Register new user</string>
+	
     <!-- Stringhe per l'activity notes -->
     <string name="title_activity_notes">Note</string>
     <string name="add_value">Nuova Nota</string>
