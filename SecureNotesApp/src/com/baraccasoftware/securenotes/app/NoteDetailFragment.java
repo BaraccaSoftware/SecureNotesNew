@@ -88,8 +88,8 @@ public class NoteDetailFragment extends Fragment implements UndoBarController.Un
 
         if (getArguments().containsKey(ARG_ITEM)) {
 
-           mItem =  getArguments().getParcelable(ARG_ITEM);
-           idNota = mItem.getmId();
+            mItem =  getArguments().getParcelable(ARG_ITEM);
+            idNota = mItem.getmId();
             log("ID NOTE LOADED: "+ idNota);
 
         }
@@ -106,7 +106,7 @@ public class NoteDetailFragment extends Fragment implements UndoBarController.Un
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_note_detail, container, false);
         isTextLayoutVisible = true;
         mTitle = (EditText) rootView.findViewById(R.id.editText_titolo_addnote);
@@ -144,6 +144,7 @@ public class NoteDetailFragment extends Fragment implements UndoBarController.Un
             }
         });
         deleteImage.setVisibility(View.GONE);
+
 
         mSlidingDrawer = (SlidingDrawer) rootView.findViewById(R.id.sliding);
         mSlidingDrawer.setOnDrawerCloseListener(new SlidingDrawer.OnDrawerCloseListener() {
@@ -241,7 +242,7 @@ public class NoteDetailFragment extends Fragment implements UndoBarController.Un
         Intent intent = (Intent) token;
         byte[] img = intent.getByteArrayExtra(IMG_COMPRESSED);
         Bitmap bitmap = BitmapFactory.decodeByteArray(img,0,img.length);
-        setImage(bitmap,img);
+        setImage(bitmap, img);
     }
 
     /**
@@ -254,7 +255,8 @@ public class NoteDetailFragment extends Fragment implements UndoBarController.Un
         if(imgCompressed == null) imgCompressed = new byte[1];
         if(!(title.equals("") && text.equals("") && imgCompressed.length==1)){
             note = new Note(0,title,text,new Date(),new byte[1]);
-            try{
+            try {
+
                 if( title.equals(mItem.getmName()) && text.equals(mItem.getmDesc()) && imgCompressed.length == mItem.getmImage().length){
                     note.setmDate(mItem.getmDate());
                 }
@@ -380,6 +382,7 @@ public class NoteDetailFragment extends Fragment implements UndoBarController.Un
         @Override
         protected Boolean doInBackground(Void... voids) {
             if(fromFile == null){
+                log(filePath);
                 bitmap = BitmapUtility.decodeFile(filePath);
                 try{
                     arrayPic = BitmapUtility.compressBitmap(bitmap,45);
