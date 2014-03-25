@@ -1,7 +1,11 @@
 package com.baraccasoftware.securenotes.app;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
@@ -250,7 +254,9 @@ public class NoteListFragment extends ListFragment {
                             @Override
                             public void onDismiss(ListView listView, int[] reverseSortedPositions) {
                                 for (int position : reverseSortedPositions) {
-                                   removeNote(position);
+                                    ConfirmDeleteNoteDialog dialog = new ConfirmDeleteNoteDialog(position);
+                                    dialog.show(getActivity().getFragmentManager(), "SureDeleteImg");
+                                  // removeNote(position);
                                 }
 
                             }
@@ -261,6 +267,34 @@ public class NoteListFragment extends ListFragment {
     }
 
 
+
+    public class ConfirmDeleteNoteDialog extends DialogFragment{
+
+        final int position;
+        public  ConfirmDeleteNoteDialog(int position){
+            this.position = position;
+        }
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            AlertDialog.Builder builder  = new AlertDialog.Builder(getActivity());
+            builder.setMessage(R.string.sure_delete_note)
+                    .setCancelable(true)
+                    .setPositiveButton(R.string.ok_ok,new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            removeNote(position);
+                        }
+                    })
+                    .setNegativeButton(R.string.annulla_button,new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            //nothing to do
+                        }
+                    });
+            return builder.create();
+        }
+    }
 
 
 

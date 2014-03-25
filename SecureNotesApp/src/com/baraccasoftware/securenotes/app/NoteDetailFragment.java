@@ -254,8 +254,12 @@ public class NoteDetailFragment extends Fragment implements UndoBarController.Un
         if(imgCompressed == null) imgCompressed = new byte[1];
         if(!(title.equals("") && text.equals("") && imgCompressed.length==1)){
             note = new Note(0,title,text,new Date(),new byte[1]);
-            if( title.equals(mItem.getmName()) && text.equals(mItem.getmDesc()) && imgCompressed.length == mItem.getmImage().length){
-                note.setmDate(mItem.getmDate());
+            try{
+                if( title.equals(mItem.getmName()) && text.equals(mItem.getmDesc()) && imgCompressed.length == mItem.getmImage().length){
+                    note.setmDate(mItem.getmDate());
+                }
+            }catch (NullPointerException ex){
+                //
             }
         }
 

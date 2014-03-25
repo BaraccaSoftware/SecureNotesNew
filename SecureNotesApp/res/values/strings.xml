@@ -46,6 +46,8 @@
     <string name="refresh_note">Refresh Notes</string>
     <string name="refreshing_note">Refresh in progress\.\.\.</string>
     <string name="refresh_completed">Refresh Completed!</string>
+    <string name="sure_delete_note">Are you sure to delete note? </string>
+    <string name="ok_ok">OK</string>
 
     <!-- stringhe per activity preferences -->
     <string name="title_activity_settings"> Settings</string>
