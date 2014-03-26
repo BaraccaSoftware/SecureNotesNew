@@ -94,6 +94,7 @@ containing a value of this type.
         public static final int popup_gray_s=0x7f05000d;
         public static final int purple=0x7f050001;
         public static final int red=0x7f050004;
+        public static final int secure_notes_main_color_theme=0x7f05000e;
         public static final int tras_bluew=0x7f05000a;
     }
     public static final class dimen {
@@ -326,6 +327,12 @@ containing a value of this type.
  Customize your theme here. 
          */
         public static final int AppTheme=0x7f0a0000;
+        /**  ActionBar styles 
+         */
+        public static final int MyActionBar=0x7f0a0005;
+        /**  the theme applied to the application or activity 
+         */
+        public static final int SecureNotesTheme=0x7f0a0004;
         public static final int UndoBar=0x7f0a0001;
         public static final int UndoBarButton=0x7f0a0003;
         public static final int UndoBarMessage=0x7f0a0002;

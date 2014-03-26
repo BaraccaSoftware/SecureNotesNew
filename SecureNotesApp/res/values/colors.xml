@@ -17,6 +17,7 @@
     <item name="popup_gray" type="color">#88888888</item>
     <item name="popup_gray_s" type="color">#BAA8A8A8</item>
 
+    <item name="secure_notes_main_color_theme" type="color">#C76249</item>
     <integer-array name="androidcolors">
         <item>@color/blue</item>
         <item>@color/purple</item>
