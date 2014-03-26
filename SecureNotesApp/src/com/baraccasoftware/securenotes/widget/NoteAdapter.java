@@ -79,7 +79,7 @@ public class NoteAdapter extends BaseAdapter {
     }
 
     public  void addAll(List<Note> notes){
-        mData.addAll(notes);
+        mData.addAll(0,notes);
     }
 
     public ArrayList<Note> getAllNotes(){
