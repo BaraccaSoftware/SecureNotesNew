@@ -320,7 +320,8 @@ public class NoteListFragment extends ListFragment {
 		ArrayList<Note> filteredNotes = new ArrayList<Note>();
 		//search notes that contain the text passed as parameter.
 		for(Note note:mAdapter.getAllNotes()){
-			if (note.getmName().contains(text) || note.getmDesc().contains(text)){
+			if (note.getmName().toLowerCase().contains(text.toString().toLowerCase()) ||
+					note.getmDesc().toLowerCase().contains(text.toString().toLowerCase())){
 				filteredNotes.add(note);
 			}
 		}
