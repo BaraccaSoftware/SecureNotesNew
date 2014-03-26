@@ -1,5 +1,11 @@
 package com.baraccasoftware.securenotes.app;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Collections;
+
 import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
@@ -10,14 +16,20 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NotificationCompat;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 
 import com.baraccasoftware.securenotes.object.ActivityUtilityInterface;
@@ -25,13 +37,6 @@ import com.baraccasoftware.securenotes.object.DAO;
 import com.baraccasoftware.securenotes.object.Note;
 import com.baraccasoftware.securenotes.object.NoteUtility;
 import com.baraccasoftware.securenotes.object.PasswordPreference;
-import com.baraccasoftware.securenotes.widget.UndoBarController;
-
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Collections;
 
 
 /**
@@ -150,7 +155,49 @@ public class NoteListActivity extends FragmentActivity
 
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.notes, menu);
-        return true;
+        
+        // Get the action view of the search menu
+        View v = (View) menu.findItem(R.id.search_action_bar_item).getActionView();
+ 
+        // Get edit text for search menu
+        EditText txtSearch = ( EditText ) v.findViewById(R.id.txt_search);
+        
+        // Create new listener textview
+        txtSearch.addTextChangedListener(new TextWatcher() {
+			
+			@Override
+			public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
+				//No implementation
+				
+			}
+			
+			@Override
+			public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
+					int arg3) {
+				// No implementation
+				
+			}
+			
+			@Override
+			public void afterTextChanged(Editable arg0) {
+				// Call searchNotes method
+				((NoteListFragment)mFragment).searchNotes(arg0.toString());
+			}
+		});
+ 
+//        /** Setting an action listener */
+//        txtSearch.setOnEditorActionListener(new OnEditorActionListener() {
+// 
+//            @Override
+//            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+//                //Toast.makeText(getBaseContext(), "Search : " + v.getText(), Toast.LENGTH_SHORT).show();
+//            	((NoteListFragment)mFragment).searchNotes(v.getText());
+//            	
+//                return false;
+//            }
+//        });
+        
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override

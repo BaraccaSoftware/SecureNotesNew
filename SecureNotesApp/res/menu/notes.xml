@@ -3,6 +3,13 @@
           android:icon="@android:drawable/ic_menu_add"
           android:title="@string/add_value"
           android:showAsAction="ifRoom" />
+	<item
+        android:id="@+id/search_action_bar_item"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="@string/search_action_bar_label"
+        android:showAsAction="ifRoom|collapseActionView"
+        android:actionLayout="@layout/search_layout"
+    />
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"

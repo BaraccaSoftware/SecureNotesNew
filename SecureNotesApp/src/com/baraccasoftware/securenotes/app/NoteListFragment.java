@@ -1,5 +1,6 @@
 package com.baraccasoftware.securenotes.app;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -268,7 +269,7 @@ public class NoteListFragment extends ListFragment {
 
 
 
-    public class ConfirmDeleteNoteDialog extends DialogFragment{
+    @SuppressLint("ValidFragment") public class ConfirmDeleteNoteDialog extends DialogFragment{
 
         final int position;
         public  ConfirmDeleteNoteDialog(int position){
@@ -307,4 +308,26 @@ public class NoteListFragment extends ListFragment {
         }
         mAdapter.notifyDataSetChanged();
     }
+
+    /**
+     * Search notes which contain the text passed as parameter and update the activity's listView.
+     * @param text 
+     * 
+     * Method by Lorenzo Napoleoni (@gitHub LorenzoNap)
+     */
+	public void searchNotes(CharSequence text) {
+		// Create new array to store new notes
+		ArrayList<Note> filteredNotes = new ArrayList<Note>();
+		//search notes that contain the text passed as parameter.
+		for(Note note:mAdapter.getAllNotes()){
+			if (note.getmName().contains(text) || note.getmDesc().contains(text)){
+				filteredNotes.add(note);
+			}
+		}
+		//create new note adapter with the new notes
+		NoteAdapter newAdpater = new NoteAdapter(getActivity().getApplicationContext(),filteredNotes);
+		// update the adapter of list view
+		getListView().setAdapter(newAdpater);
+		
+	}
 }
