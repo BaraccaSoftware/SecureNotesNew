@@ -632,7 +632,9 @@ public class NoteListActivity extends FragmentActivity
             if(esito){
                 //aggiorno listview
                 Collections.reverse(mData);
-                if(mFragment instanceof NoteListFragment) ((NoteListFragment)mFragment).addAllNote(mData);
+                if(mFragment instanceof NoteListFragment){
+                	((NoteListFragment)mFragment).addAllNote(mData);
+                }
             }else{
                 //mostro toast di info
             }

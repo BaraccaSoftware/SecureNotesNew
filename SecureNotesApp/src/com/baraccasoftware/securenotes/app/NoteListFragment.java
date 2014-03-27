@@ -1,5 +1,9 @@
 package com.baraccasoftware.securenotes.app;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -12,14 +16,11 @@ import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.baraccasoftware.securenotes.object.Note;
 import com.baraccasoftware.securenotes.widget.NoteAdapter;
 import com.baraccasoftware.securenotes.widget.SwipeDismissListViewTouchListener;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 /**
  * A list fragment representing a list of Notes. This fragment
@@ -108,11 +109,23 @@ public class NoteListFragment extends ListFragment {
         // TODO: replace with a real list adapter.
         mAdapter = new NoteAdapter(getActivity().getApplicationContext(),new ArrayList<Note>());
         //addFakeNote();
+       
+        
         setListAdapter(mAdapter);
 
 
         NoteListActivity mActivity = (NoteListActivity) getActivity();
         mActivity.loadNoteFromDB();
+        
+//        LayoutInflater inflater = (LayoutInflater) getActivity().getApplicationContext().getSystemService( Context.LAYOUT_INFLATER_SERVICE );
+//
+//        View view = inflater.inflate(R.layout.footer_view_list_notes, null);
+//
+//        TextView footer = (TextView) view.findViewById(R.id.footer_view);
+//
+//        getListView().addFooterView(footer);
+
+       
     }
 
     @Override
@@ -326,9 +339,11 @@ public class NoteListFragment extends ListFragment {
 			}
 		}
 		//create new note adapter with the new notes
+		if(getActivity() != null){
 		NoteAdapter newAdpater = new NoteAdapter(getActivity().getApplicationContext(),filteredNotes);
 		// update the adapter of list view
 		getListView().setAdapter(newAdpater);
+		}
 		
 	}
 }
