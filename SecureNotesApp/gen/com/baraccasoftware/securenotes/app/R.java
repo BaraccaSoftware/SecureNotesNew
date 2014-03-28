@@ -81,20 +81,21 @@ containing a value of this type.
         public static final int topOffset=0x7f010004;
     }
     public static final class color {
+        public static final int black=0x7f05000b;
         public static final int blue=0x7f050000;
         public static final int darkblue=0x7f050005;
         public static final int darkgreen=0x7f050007;
         public static final int darkorange=0x7f050008;
         public static final int darkpurple=0x7f050006;
         public static final int darkred=0x7f050009;
-        public static final int fic_yell=0x7f05000b;
+        public static final int fic_yell=0x7f05000c;
         public static final int green=0x7f050002;
         public static final int orange=0x7f050003;
-        public static final int popup_gray=0x7f05000c;
-        public static final int popup_gray_s=0x7f05000d;
+        public static final int popup_gray=0x7f05000d;
+        public static final int popup_gray_s=0x7f05000e;
         public static final int purple=0x7f050001;
         public static final int red=0x7f050004;
-        public static final int secure_notes_main_color_theme=0x7f05000e;
+        public static final int secure_notes_main_color_theme=0x7f05000f;
         public static final int tras_bluew=0x7f05000a;
     }
     public static final class dimen {
@@ -117,33 +118,35 @@ containing a value of this type.
         public static final int ic_undobar_undo=0x7f020007;
         public static final int listview_back=0x7f020008;
         public static final int lockapp_background=0x7f020009;
-        public static final int undobar=0x7f02000a;
-        public static final int undobar_button=0x7f02000b;
-        public static final int undobar_button_focused=0x7f02000c;
-        public static final int undobar_button_pressed=0x7f02000d;
-        public static final int undobar_divider=0x7f02000e;
+        public static final int rounded_border=0x7f02000a;
+        public static final int undobar=0x7f02000b;
+        public static final int undobar_button=0x7f02000c;
+        public static final int undobar_button_focused=0x7f02000d;
+        public static final int undobar_button_pressed=0x7f02000e;
+        public static final int undobar_divider=0x7f02000f;
     }
     public static final class id {
         public static final int TextView01=0x7f0c0020;
-        public static final int action_add=0x7f0c002a;
-        public static final int action_export=0x7f0c002c;
-        public static final int action_import=0x7f0c002d;
-        public static final int action_settings=0x7f0c0029;
+        public static final int access_text_view=0x7f0c0021;
+        public static final int action_add=0x7f0c002c;
+        public static final int action_export=0x7f0c002e;
+        public static final int action_import=0x7f0c002f;
+        public static final int action_settings=0x7f0c002b;
         public static final int app_locked_title_dialog=0x7f0c001b;
-        public static final int baracca_software_presents=0x7f0c0027;
+        public static final int baracca_software_presents=0x7f0c0028;
         public static final int button_accedi=0x7f0c001f;
-        public static final int button_signin=0x7f0c0026;
+        public static final int button_signin=0x7f0c0027;
         public static final int button_unlock_app=0x7f0c001d;
         public static final int container_info_activity=0x7f0c0000;
         public static final int container_main_activity=0x7f0c0001;
         public static final int editText_export_notes_fragment=0x7f0c0005;
-        public static final int editText_ins_password=0x7f0c0024;
-        public static final int editText_pass1_alertdialog_password=0x7f0c0021;
-        public static final int editText_pass2_alertdialog_password=0x7f0c0022;
-        public static final int editText_pass3_alertdialog_password=0x7f0c0023;
+        public static final int editText_ins_password=0x7f0c0025;
+        public static final int editText_pass1_alertdialog_password=0x7f0c0022;
+        public static final int editText_pass2_alertdialog_password=0x7f0c0023;
+        public static final int editText_pass3_alertdialog_password=0x7f0c0024;
         public static final int editText_password=0x7f0c001e;
         public static final int editText_password_locked_app=0x7f0c001c;
-        public static final int editText_reins_password=0x7f0c0025;
+        public static final int editText_reins_password=0x7f0c0026;
         public static final int editText_text_addnote=0x7f0c0013;
         public static final int editText_titolo_addnote=0x7f0c0012;
         public static final int footer_view=0x7f0c0006;
@@ -156,7 +159,8 @@ containing a value of this type.
         public static final int note_detail_container=0x7f0c0002;
         public static final int note_list=0x7f0c0003;
         public static final int popup_window=0x7f0c0010;
-        public static final int search_action_bar_item=0x7f0c002b;
+        public static final int register_user_title=0x7f0c0029;
+        public static final int search_action_bar_item=0x7f0c002d;
         public static final int sliding=0x7f0c000f;
         public static final int textView=0x7f0c0004;
         public static final int textView3=0x7f0c000c;
@@ -166,7 +170,7 @@ containing a value of this type.
         public static final int textView_code=0x7f0c000b;
         public static final int textView_data_addnote=0x7f0c0014;
         public static final int textView_versione=0x7f0c0009;
-        public static final int txt_search=0x7f0c0028;
+        public static final int txt_search=0x7f0c002a;
         public static final int undobar_button=0x7f0c0017;
         public static final int undobar_detail_activity=0x7f0c0015;
         public static final int undobar_message=0x7f0c0016;
@@ -332,7 +336,11 @@ containing a value of this type.
         /**  ActionBar styles 
          */
         public static final int MyActionBar=0x7f0a0005;
+        /**  Button style 
+         */
+        public static final int MyButton=0x7f0a0006;
         /**  the theme applied to the application or activity 
+  <item name="android:buttonStyle">@style/MyButton</item> 
          */
         public static final int SecureNotesTheme=0x7f0a0004;
         public static final int UndoBar=0x7f0a0001;

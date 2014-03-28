@@ -3,10 +3,17 @@
     <!-- the theme applied to the application or activity -->
     <style name="SecureNotesTheme" parent="@android:style/Theme.Holo.Light">
         <item name="android:actionBarStyle">@style/MyActionBar</item>
+       <!--  <item name="android:buttonStyle">@style/MyButton</item> -->
     </style>
 
     <!-- ActionBar styles -->
     <style name="MyActionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
         <item name="android:background">@color/secure_notes_main_color_theme</item>
     </style>
+    
+    <!-- Button style -->
+    <style name="MyButton" parent="@android:style/Widget.Button">
+        <item name="android:background">@color/secure_notes_main_color_theme</item>
+    </style>
+    
 </resources>

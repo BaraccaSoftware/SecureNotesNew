@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.baraccasoftware.app.utils.UtilsClass;
 import com.baraccasoftware.securenotes.object.PasswordPreference;
 
 /**
@@ -36,6 +37,16 @@ public class RegisterFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.register_fragment_layout,container,false);
+        
+        TextView baraccaTitle = (TextView) view.findViewById(R.id.baracca_software_presents);
+        UtilsClass.setCustomFontToTextView(baraccaTitle, getActivity().getAssets());
+        
+        TextView secureNotesTitle = (TextView) view.findViewById(R.id.textView_appname2);
+        UtilsClass.setCustomFontToTextView(secureNotesTitle, getActivity().getAssets());
+        
+        TextView registerUserTitle = (TextView) view.findViewById(R.id.register_user_title);
+        UtilsClass.setCustomFontToTextView(registerUserTitle, getActivity().getAssets());
+        
         ins_password = (TextView) view.findViewById(R.id.editText_ins_password);
         reins_password = (TextView) view.findViewById(R.id.editText_reins_password);
         enter = (Button) view.findViewById(R.id.button_signin);

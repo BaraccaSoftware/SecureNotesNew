@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.baraccasoftware.app.utils.UtilsClass;
 import com.baraccasoftware.securenotes.object.PasswordPreference;
 
 /**
@@ -35,6 +36,14 @@ public class LogInFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.log_in_fragment_layout,container,false);
+        
+        TextView mainTitle = (TextView) view.findViewById(R.id.textView_appname2);
+        UtilsClass.setCustomFontToTextView(mainTitle, getActivity().getAssets());
+        
+        
+        TextView accessText = (TextView) view.findViewById(R.id.access_text_view);
+        UtilsClass.setCustomFontToTextView(accessText, getActivity().getAssets());
+        
         ins_password = (TextView) view.findViewById(R.id.editText_password);
         enter = (Button) view.findViewById(R.id.button_accedi);
         enter.setOnClickListener(new View.OnClickListener() {

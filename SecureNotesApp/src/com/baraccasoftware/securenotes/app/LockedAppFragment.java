@@ -9,8 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.baraccasoftware.app.utils.UtilsClass;
 import com.baraccasoftware.securenotes.object.ActivityUtilityInterface;
 import com.baraccasoftware.securenotes.object.PasswordPreference;
 
@@ -32,6 +34,9 @@ public class LockedAppFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootview = inflater.inflate(R.layout.locked_app_fragment,container,false);
+        TextView lockedApp =  (TextView) rootview.findViewById(R.id.app_locked_title_dialog);
+        UtilsClass.setCustomFontToTextView(lockedApp, getActivity().getAssets());
+        
         insertEDT = (EditText) rootview.findViewById(R.id.editText_password_locked_app);
         unlockButton = (Button) rootview.findViewById(R.id.button_unlock_app);
         unlockButton.setOnClickListener(new View.OnClickListener() {
