@@ -63,21 +63,30 @@ public class RegisterFragment extends Fragment {
         String pss1 = ins_password.getText().toString().trim();
         String pss2 = reins_password.getText().toString().trim();
 
-        if(pss1.equals(pss2)){
-            //password ok
+        //Check if input is empty or the two password do not match
+        if(pss1.equals("") || pss2.equals("")){
+            ins_password.setText("");
+            ins_password.setHint(R.string.esito_no);
+            ins_password.setHintTextColor(Color.RED);
+            Toast.makeText(mActivity.getApplicationContext(), R.string.empty_passwords,Toast.LENGTH_LONG).show();
+        }
+        else if(pss1.equals(pss2)){
             ins_password.setHint(R.string.esito_ok);
             ins_password.setHintTextColor(Color.GREEN);
             PasswordPreference passwordPreference = new PasswordPreference(mActivity.getApplicationContext());
             passwordPreference.savePassword(pss1);
             passwordPreference.setLockedApp(false);
             startNoteActivity();
-        }else{
-            //password differenti
+        }
+        else{
+
             ins_password.setText("");
             ins_password.setHint(R.string.esito_no);
             ins_password.setHintTextColor(Color.RED);
-            Toast.makeText(mActivity.getApplicationContext(), R.string.password_diverse,Toast.LENGTH_LONG).show();
+            Toast.makeText(mActivity.getApplicationContext(), R.string.different_password,Toast.LENGTH_LONG).show();
         }
+
+
     }
 
     private void startNoteActivity(){

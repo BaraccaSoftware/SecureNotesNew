@@ -45,6 +45,7 @@
     <string name="updating_completed">Note aggiornate nel DB</string>
     <string name="error_import_note">Errore nell\'importare le note. Ricontrolla la Password. </string>
     <string name="sure_delete_note">Sicuro di voler eliminare la Nota? </string>
+    <string name="empty_passwords">Password vuote</string>
 
     <!-- stringhe per activity preferences -->
     <string name="title_activity_settings"> Preferenze</string>
@@ -127,6 +128,7 @@
 
     <string name="title_alert_dialog_locked_app">App Bloccata</string>
     <string name="unlock_app_positive_button">Sblocca</string>
+    <string name="different_password">Le password non corrispondono</string>
 
 
 </resources>
