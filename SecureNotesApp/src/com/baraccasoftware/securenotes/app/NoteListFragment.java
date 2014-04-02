@@ -340,10 +340,15 @@ public class NoteListFragment extends ListFragment {
 		}
 		//create new note adapter with the new notes
 		if(getActivity() != null){
+
 		NoteAdapter newAdpater = new NoteAdapter(getActivity().getApplicationContext(),filteredNotes);
 		// update the adapter of list view
 		getListView().setAdapter(newAdpater);
 		}
 		
 	}
+
+    public void resetAdapterAfterSearch(){
+        getListView().setAdapter(mAdapter);
+    }
 }

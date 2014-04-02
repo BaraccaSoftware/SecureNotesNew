@@ -1,5 +1,6 @@
 package com.baraccasoftware.securenotes.app;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -23,12 +24,14 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.baraccasoftware.securenotes.object.ActivityUtilityInterface;
 import com.baraccasoftware.securenotes.object.BitmapUtility;
 import com.baraccasoftware.securenotes.object.Note;
 import com.baraccasoftware.securenotes.object.NoteUtility;
+import com.baraccasoftware.securenotes.widget.NoteAdapter;
 import com.baraccasoftware.securenotes.widget.SlidingDrawer;
 import com.baraccasoftware.securenotes.widget.UndoBarController;
 
@@ -73,7 +76,7 @@ public class NoteDetailFragment extends Fragment implements UndoBarController.Un
     private byte[] imgCompressed;
     private int notePosition;
 
-    private String pathFile;
+    public static String pathFile;
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -235,6 +238,12 @@ public class NoteDetailFragment extends Fragment implements UndoBarController.Un
             //op.inSampleSize = 2;
             //setImage(BitmapFactory.decodeFile(pathFile,op),null);
         }
+
+    }
+
+    public void callCameraTask(){
+        LoadPicTask task = new LoadPicTask(pathFile,null);
+        task.execute();
     }
 
     @Override
@@ -279,22 +288,40 @@ public class NoteDetailFragment extends Fragment implements UndoBarController.Un
             }else{
                 result = ((NoteDetailActivity) getActivity()).RESULT_CANCELED;
             }
+            Context context = getActivity().getApplicationContext();
+            int duration = Toast.LENGTH_SHORT;
 
+            Toast toast = Toast.makeText(context, context.getResources().getString(R.string.note_saved), duration);
+            toast.show();
             ((NoteDetailActivity) getActivity()).setSameApp(true);
             getActivity().setResult(result,intent);
             getActivity().finish();
         }else{
+            int result;
             //other --  tablet device
             if(note != null){
                 if(toModifyNote){
                     note.setmId(idNota);
                     note.setmImage(imgCompressed);
                     ((NoteListActivity)getActivity()).updateNote(note);
+                   Fragment noteLisFragment =  ((NoteListActivity)getActivity()).getmFragment();
+
+                   ((NoteListFragment) noteLisFragment).getListView().postInvalidate();
+
+
                 }else{
                     toModifyNote = true;
                     ((NoteListActivity)getActivity()).saveNote(note);
+                    Fragment noteLisFragment =  ((NoteListActivity)getActivity()).getmFragment();
+                    ((NoteListFragment) noteLisFragment).getListView().postInvalidate();
                 }
             }
+            //TOAST NOTE SAVED
+            Context context = getActivity().getApplicationContext();
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, context.getResources().getString(R.string.note_saved), duration);
+            toast.show();
         }
     }
 
@@ -319,7 +346,14 @@ public class NoteDetailFragment extends Fragment implements UndoBarController.Un
 
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri);
-        startActivityForResult(cameraIntent, NoteDetailFragment.CAMERA_PIC_REQUEST);
+
+        if(getActivity() instanceof NoteListActivity) {
+
+            this.getActivity().startActivityForResult(cameraIntent, NoteDetailFragment.CAMERA_PIC_REQUEST);
+        }
+        else{
+            startActivityForResult(cameraIntent, NoteDetailFragment.CAMERA_PIC_REQUEST);
+        }
     }
 
     /**

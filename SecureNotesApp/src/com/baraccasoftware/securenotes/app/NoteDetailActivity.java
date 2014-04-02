@@ -1,5 +1,6 @@
 package com.baraccasoftware.securenotes.app;
 
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -37,6 +38,8 @@ public class NoteDetailActivity extends FragmentActivity implements ActivityUtil
 
 
     boolean sameApp;
+    private  boolean addNoteFragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +66,8 @@ public class NoteDetailActivity extends FragmentActivity implements ActivityUtil
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
             argumentToFragment = getIntent().getExtras();
+
+            addNoteFragment = (Boolean) argumentToFragment.get("AddNote");
             setLayout();
         }
     }
@@ -122,8 +127,27 @@ public class NoteDetailActivity extends FragmentActivity implements ActivityUtil
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
 
+        super.onActivityResult(requestCode, resultCode, data);
+        }
+
+    public void openModifyFragment(){
+        if(fragment != null) {
+            getSupportFragmentManager().beginTransaction().remove(fragment).commit();
+        }
+        if(passwordPreference.isAppLocked()){
+            log("LockedApp");
+            fragment = new LockedAppFragment();
+
+        }else{
+            fragment = new NoteDetailFragment();
+
+            if(argumentToFragment != null) fragment.setArguments(argumentToFragment);
+
+        }
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.note_detail_container, fragment)
+                .commit();
     }
 
     @Override
@@ -139,11 +163,19 @@ public class NoteDetailActivity extends FragmentActivity implements ActivityUtil
             log("LockedApp");
             fragment = new LockedAppFragment();
 
-        }else{
-            fragment = new NoteDetailFragment();
-            if(argumentToFragment != null) fragment.setArguments(argumentToFragment);
+        }else {
+            if (addNoteFragment) {
+                fragment = new NoteDetailFragment();
+            }
+         else{
+                fragment = new ShowNoteDetailFragment();
+             }
+
+         if(argumentToFragment != null) fragment.setArguments(argumentToFragment);
 
         }
+
+
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.note_detail_container, fragment)
                 .commit();

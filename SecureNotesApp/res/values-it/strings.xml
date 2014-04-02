@@ -129,6 +129,8 @@
     <string name="title_alert_dialog_locked_app">App Bloccata</string>
     <string name="unlock_app_positive_button">Sblocca</string>
     <string name="different_password">Le password non corrispondono</string>
+    <string name="menuitem_refresh">Refresh</string>
+    <string name="note_saved">Nota Salvata</string>
 
 
 </resources>

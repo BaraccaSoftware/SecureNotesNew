@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.baraccasoftware.app.utils.UtilsClass;
+
 /**
  * Created by angelo on 25/02/14.
  */
@@ -37,6 +39,19 @@ public class InfoFragment extends Fragment {
                startBroserActivity(code.getText().toString());
             }
         });
+
+
+        TextView appName = (TextView) rootView.findViewById(R.id.textView_appname2);
+        UtilsClass.setCustomFontToTextView(appName,getActivity().getAssets());
+
+        TextView versionCode = (TextView) rootView.findViewById(R.id.textView_versione);
+        UtilsClass.setCustomFontToTextView(versionCode,getActivity().getAssets());
+
+        TextView license = (TextView) rootView.findViewById(R.id.license);
+        UtilsClass.setCustomFontToTextView(license,getActivity().getAssets());
+
+
+
         return rootView;
     }
     private void startBroserActivity(String url){

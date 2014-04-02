@@ -37,6 +37,9 @@ import com.baraccasoftware.securenotes.object.DAO;
 import com.baraccasoftware.securenotes.object.Note;
 import com.baraccasoftware.securenotes.object.NoteUtility;
 import com.baraccasoftware.securenotes.object.PasswordPreference;
+import com.baraccasoftware.securenotes.widget.NoteAdapter;
+
+import static com.baraccasoftware.securenotes.app.NoteDetailFragment.*;
 
 
 /**
@@ -74,9 +77,19 @@ public class NoteListActivity extends FragmentActivity
     private int mItemPosition;
 
     private boolean sameApp;
+    private EditText txtSearch;
+
+
+    public Fragment getmFragment() {
+        return mFragment;
+    }
+
+    public void setmFragment(Fragment mFragment) {
+        this.mFragment = mFragment;
+    }
 
     //fragment fisso
-    Fragment mFragment;
+    private Fragment mFragment;
     Fragment secondFragment;
 
     //preferencePassword
@@ -137,15 +150,20 @@ public class NoteListActivity extends FragmentActivity
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(resultCode == RESULT_OK){
-            Bundle bundle = data.getExtras();
-            Note note =  bundle.getParcelable(NoteDetailFragment.ARG_ITEM);
-            if(requestCode == REQUEST_ADD_NEW_NOTE_CODE){
-                //nuova note
+            if(requestCode == NoteDetailFragment.CAMERA_PIC_REQUEST){
+               ((NoteDetailFragment)secondFragment).callCameraTask();
+            }
+            else {
+                Bundle bundle = data.getExtras();
+                Note note = bundle.getParcelable(ARG_ITEM);
+                if (requestCode == REQUEST_ADD_NEW_NOTE_CODE) {
+                    //nuova note
 
-               saveNote(note);
-            }else {
-                //nota da aggiornare
-                updateNote(note);
+                    saveNote(note);
+                } else {
+                    //nota da aggiornare
+                    updateNote(note);
+                }
             }
         }
     }
@@ -158,44 +176,51 @@ public class NoteListActivity extends FragmentActivity
         
         // Get the action view of the search menu
         View v = (View) menu.findItem(R.id.search_action_bar_item).getActionView();
- 
+
+
         // Get edit text for search menu
-        EditText txtSearch = ( EditText ) v.findViewById(R.id.txt_search);
+         txtSearch = ( EditText ) v.findViewById(R.id.txt_search);
         
-        // Create new listener textview
-        txtSearch.addTextChangedListener(new TextWatcher() {
-			
-			@Override
-			public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
-				//No implementation
-				
-			}
-			
-			@Override
-			public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
-					int arg3) {
-				// No implementation
-				
-			}
-			
-			@Override
-			public void afterTextChanged(Editable arg0) {
-				// Call searchNotes method
-				((NoteListFragment)mFragment).searchNotes(arg0.toString());
-			}
-		});
+
+        if (true) {
+//            txtSearch.setOnEditorActionListener(new OnEditorActionListener() {
+//
+//                @Override
+//                public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+//                    //Toast.makeText(getBaseContext(), "Search : " + v.getText(), Toast.LENGTH_SHORT).show();
+//                    ((NoteListFragment)mFragment).searchNotes(v.getText());
+//
+//                    return false;
+//                }
+//            });
+
+            // Create new listener textview
+            txtSearch.addTextChangedListener(new TextWatcher() {
+
+                @Override
+                public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
+                    //No implementation
+
+                }
+
+                @Override
+                public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
+                                              int arg3) {
+                    // No implementation
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable arg0) {
+                    // Call searchNotes method
+                    ((NoteListFragment) mFragment).searchNotes(arg0.toString());
+
+                }
+            });
+        }
  
-//        /** Setting an action listener */
-//        txtSearch.setOnEditorActionListener(new OnEditorActionListener() {
-// 
-//            @Override
-//            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-//                //Toast.makeText(getBaseContext(), "Search : " + v.getText(), Toast.LENGTH_SHORT).show();
-//            	((NoteListFragment)mFragment).searchNotes(v.getText());
-//            	
-//                return false;
-//            }
-//        });
+        /** Setting an action listener */
+
         
         return super.onCreateOptionsMenu(menu);
     }
@@ -206,12 +231,19 @@ public class NoteListActivity extends FragmentActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        //TODO RICONTROLLARE PER RISOLVERE IL BUG DELLA RICERCA
+        if(id == R.id.airport_menuRefresh){
+            NoteListFragment noteListFragment = ((NoteListFragment)mFragment);
+            NoteAdapter adp = (NoteAdapter) noteListFragment.getListAdapter();
+            adp.notifyDataSetChanged();
+            ((NoteListFragment) mFragment).resetAdapterAfterSearch();
+        }
         if (id == R.id.action_settings) {
             startActivity(new Intent(this,SettingsActivity.class));
             setSameApp(true);
             return true;
         }else if(id == R.id.action_add){
-            showDetailNote(null);
+            showDetailNote(null,true);
             setSameApp(true);
             return true;
         }else if(id == R.id.action_export){
@@ -341,7 +373,7 @@ public class NoteListActivity extends FragmentActivity
      */
     @Override
     public void onItemSelected(Note note,int position) {
-        showDetailNote(note);
+        showDetailNote(note,false);
         mItemPosition = position;
     }
 
@@ -350,6 +382,7 @@ public class NoteListActivity extends FragmentActivity
         //if (mFragment instanceof NoteListFragment) ((NoteListFragment)mFragment).addNote(note);
         StoreNoteToDBTask task = new StoreNoteToDBTask(note);
         task.execute(false);
+        ((NoteListFragment) mFragment).resetAdapterAfterSearch();
     }
     @Override
     public void updateNote(Note note){
@@ -371,6 +404,7 @@ public class NoteListActivity extends FragmentActivity
             secondFragment.setArguments(new Bundle());
             getSupportFragmentManager().beginTransaction().replace(R.id.note_detail_container, secondFragment).commit();
         }
+        ((NoteListFragment) mFragment).resetAdapterAfterSearch();
     }
 
     @Override
@@ -431,17 +465,22 @@ public class NoteListActivity extends FragmentActivity
         task.execute();
     }
 
-    private void showDetailNote(Note note){
+    private void showDetailNote(Note note, boolean newNote){
         if (mTwoPane) {
             // In two-pane mode, show the detail view in this activity by
             // adding or replacing the detail fragment using a
             // fragment transaction.
             Bundle bun = new Bundle();
-            secondFragment = new NoteDetailFragment();
+            if(newNote) {
+                secondFragment = new NoteDetailFragment();
+            }
+            else{
+                secondFragment = new ShowNoteDetailFragment();
+            }
             if(note != null){
-                bun.putParcelable(NoteDetailFragment.ARG_ITEM, note);
-                bun.putBoolean(NoteDetailFragment.NOTE_TO_MOD,true);
-                bun.putInt(NoteDetailFragment.POSITION_ID,mItemPosition);
+                bun.putParcelable(ARG_ITEM, note);
+                bun.putBoolean(NOTE_TO_MOD,true);
+                bun.putInt(POSITION_ID,mItemPosition);
             }
             secondFragment.setArguments(bun);
             getSupportFragmentManager().beginTransaction()
@@ -454,8 +493,9 @@ public class NoteListActivity extends FragmentActivity
             setSameApp(true);
             Intent detailIntent = new Intent(this, NoteDetailActivity.class);
             Bundle bun = new Bundle();
+            detailIntent.putExtra("AddNote",newNote);
             if(note != null){
-                bun.putParcelable(NoteDetailFragment.ARG_ITEM,note);
+                bun.putParcelable(ARG_ITEM,note);
                 detailIntent.putExtras(bun);
                 startActivityForResult(detailIntent, REQUEST_UPDATE_NEW_NOTE_CODE);
             }else{
@@ -481,6 +521,29 @@ public class NoteListActivity extends FragmentActivity
     }
 
 
+     public void openModifyFragment(Note note){
+            if(secondFragment != null) {
+                getSupportFragmentManager().beginTransaction().remove(secondFragment).commit();
+            }
+            if(passwordPreference.isAppLocked()){
+                log("LockedApp");
+                secondFragment = new LockedAppFragment();
+
+            }else{
+                secondFragment = new NoteDetailFragment();
+                Bundle bun = new Bundle();
+                bun.putParcelable(ARG_ITEM, note);
+                bun.putBoolean(NOTE_TO_MOD,true);
+                bun.putInt(POSITION_ID,mItemPosition);
+                secondFragment.setArguments(bun);
+
+            }
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.note_detail_container, secondFragment)
+                    .commit();
+        }
+
+
 
     private class StoreNoteToDBTask  extends AsyncTask<Boolean,Void,Boolean> {
         Note mNote;
@@ -489,6 +552,7 @@ public class NoteListActivity extends FragmentActivity
         public StoreNoteToDBTask(Note n){
             mNote = n;
         }
+
 
         @Override
         protected void onPreExecute() {

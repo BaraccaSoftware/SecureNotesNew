@@ -134,5 +134,7 @@
     <string name="title_note_detail">Note Detail</string>
     <string name="empty_passwords">Empty Password</string>
     <string name="different_password">Passwords don\'t match</string>
+    <string name="menuitem_refresh">Refresh</string>
+    <string name="note_saved">Note Saved</string>
 
 </resources>

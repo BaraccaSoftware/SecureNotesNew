@@ -23,8 +23,8 @@
         android:layout_height="wrap_content"
         android:text="@string/app_name_2"
         android:textSize="45dp"
-        android:layout_above="@+id/textView_versione"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/textView3" />
 
     <TextView
         android:id="@+id/textView_versione"
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:text="Version 1.0"
         android:textSize="20dp"
-        android:layout_above="@+id/license"
+        android:layout_above="@+id/imageView"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -41,15 +41,14 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Apache license"
         android:id="@+id/license"
-        android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/textView_versione"
+        android:layout_alignBottom="@+id/imageView"
         android:layout_alignStart="@+id/textView_versione" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="github.com/chemickypes/SecNote"
+        android:text="https://github.com/BaraccaSoftware/SecureNotesNew"
         android:textColor="@android:color/holo_blue_light"
         android:id="@+id/textView_code"
         android:layout_alignParentBottom="true"
