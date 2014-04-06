@@ -131,6 +131,9 @@
     <string name="different_password">Le password non corrispondono</string>
     <string name="menuitem_refresh">Refresh</string>
     <string name="note_saved">Nota Salvata</string>
+    <string name="last_modified_data">Ultima Modifica</string>
+    <string name="no_title">Nessun Titolo</string>
+    <string name="no_desc">Nessuna Descrizione</string>
 
 
 </resources>

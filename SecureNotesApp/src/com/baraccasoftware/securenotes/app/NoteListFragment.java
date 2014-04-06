@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -125,7 +126,8 @@ public class NoteListFragment extends ListFragment {
 //
 //        getListView().addFooterView(footer);
 
-       
+
+
     }
 
     @Override
@@ -138,6 +140,13 @@ public class NoteListFragment extends ListFragment {
             setActivatedPosition(savedInstanceState.getInt(STATE_ACTIVATED_POSITION));
         }
         setDeleteTouchListener();
+//        getListView().setLongClickable(true);
+//        getListView().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+//            public boolean onItemLongClick(AdapterView<?> parent, View v, int position, long id) {
+//                removeNote(position);
+//                return true;
+//            }
+//        });
     }
 
     @Override
@@ -169,6 +178,7 @@ public class NoteListFragment extends ListFragment {
         Note note = (Note) mAdapter.getItem(position);
         mCallbacks.onItemSelected(note,position);
     }
+
 
     @Override
     public void onSaveInstanceState(Bundle outState) {

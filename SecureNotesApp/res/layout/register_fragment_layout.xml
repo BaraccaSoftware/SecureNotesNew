@@ -11,8 +11,8 @@
     tools:context=".MainActivity" >
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:id="@+id/imageView"
         android:background="@drawable/artwork"
         android:contentDescription="@string/about_bs"
@@ -26,8 +26,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true">
+        android:layout_below="@+id/register_user_title"
+        android:layout_alignStart="@+id/editText_reins_password">
         <requestFocus />
     </EditText>
 
@@ -35,10 +35,10 @@
         android:id="@+id/register_user_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView"
-        android:layout_centerHorizontal="true"
         android:text="@string/register_new_user"
-        android:textSize="30sp" />
+        android:textSize="25sp"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/textView_appname2"
@@ -58,8 +58,7 @@
         android:hint="@string/reins_password"
         android:inputType="textPassword"
         android:layout_below="@+id/editText_ins_password"
-        android:layout_alignEnd="@+id/textView_appname2"
-        android:layout_marginTop="36dp" />
+        android:layout_alignStart="@+id/register_user_title" />
 
 
     <Button

@@ -136,5 +136,8 @@
     <string name="different_password">Passwords don\'t match</string>
     <string name="menuitem_refresh">Refresh</string>
     <string name="note_saved">Note Saved</string>
+    <string name="last_modified_data">Last Modified</string>
+    <string name="no_title">No Name</string>
+    <string name="no_desc">No Description</string>
 
 </resources>
