@@ -41,6 +41,8 @@ public class ShowNoteDetailFragment extends Fragment {
     public static final String ARG_ITEM = "item_note";
     public static final  int SHOW_MODIFY_NOTE = 10 ;
     private Note mItem;
+
+
     private int idNota;
     private ImageView mImageView;
 
@@ -103,7 +105,7 @@ public class ShowNoteDetailFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         MenuItem saveMenuItem = menu.add("modify");
-        saveMenuItem.setIcon(R.drawable.ic_content_edit);
+        saveMenuItem.setIcon(R.drawable.ic_action_edit);
         saveMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
     }
 
@@ -197,5 +199,12 @@ public class ShowNoteDetailFragment extends Fragment {
 
     }
 
+    public int getIdNota() {
+        return idNota;
+    }
+
+    public void setIdNota(int idNota) {
+        this.idNota = idNota;
+    }
 
 }

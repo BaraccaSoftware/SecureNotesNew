@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+
+
+
+    <Button
+        android:background="@drawable/rounded_border_red"
+        android:id="@+id/button_accedi"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/accedi"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/editText_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/hint_edtx"
+        android:inputType="textPassword"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="119dp"
+        android:textSize="40sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/retrieve_password"
+        android:onClick="onClick"
+        android:clickable="true"
+        android:id="@+id/retrieve_password_text"
+        android:textSize="30dp"
+        android:layout_below="@+id/editText_password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="62dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/artwork"
+        android:contentDescription="@string/about_bs"
+        android:layout_marginTop="128dp"
+        android:layout_below="@+id/access_text_view"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/textView_appname2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/TextView01"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="26dp"
+        android:text="@string/app_name_2"
+        android:textSize="60sp" />
+
+    <TextView
+        android:id="@+id/access_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login_text"
+        android:textSize="60sp"
+        android:textIsSelectable="true"
+        android:layout_below="@+id/textView_appname2"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

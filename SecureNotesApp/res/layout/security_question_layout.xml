@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/secure_question"
+        android:id="@+id/textView"
+        android:layout_margin="5dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/question_edit_text"
+        android:layout_margin="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/answer_question"
+        android:id="@+id/textView2"
+        android:layout_margin="5dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/answer_question_edit_text"
+        android:layout_margin="5dp" />
+
+    <Button
+        android:background="@drawable/rounded_border_red"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/save_answer"
+        android:id="@+id/save_answer_buttton"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_margin="5dp" />
+</LinearLayout>

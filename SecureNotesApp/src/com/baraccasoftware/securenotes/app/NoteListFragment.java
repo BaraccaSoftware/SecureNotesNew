@@ -14,6 +14,8 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -22,6 +24,8 @@ import android.widget.TextView;
 import com.baraccasoftware.securenotes.object.Note;
 import com.baraccasoftware.securenotes.widget.NoteAdapter;
 import com.baraccasoftware.securenotes.widget.SwipeDismissListViewTouchListener;
+
+
 
 /**
  * A list fragment representing a list of Notes. This fragment
@@ -33,6 +37,8 @@ import com.baraccasoftware.securenotes.widget.SwipeDismissListViewTouchListener;
  * interface.
  */
 public class NoteListFragment extends ListFragment {
+
+
 
     /**
      * The serialization (saved instance state) Bundle key representing the
@@ -357,6 +363,8 @@ public class NoteListFragment extends ListFragment {
 		}
 		
 	}
+
+
 
     public void resetAdapterAfterSearch(){
         getListView().setAdapter(mAdapter);

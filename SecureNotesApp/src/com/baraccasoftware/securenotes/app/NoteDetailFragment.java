@@ -176,21 +176,21 @@ public class NoteDetailFragment extends Fragment implements UndoBarController.Un
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        MenuItem addPhotoMenuItem = menu.add("camera");
-        addPhotoMenuItem.setIcon(android.R.drawable.ic_menu_camera);
+        MenuItem addPhotoMenuItem = menu.add(getString(R.string.get_photo));
+        addPhotoMenuItem.setIcon(R.drawable.ic_action_camera);
         addPhotoMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
-        MenuItem saveMenuItem = menu.add("save");
-        saveMenuItem.setIcon(R.drawable.ic_save_accept);
+        MenuItem saveMenuItem = menu.add(getString(R.string.save_note));
+        saveMenuItem.setIcon(R.drawable.ic_action_accept);
         saveMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         String title =  item.getTitle().toString();
-        if(title.equals("save")  ){
+        if(title.equals(getString(R.string.save_note))  ){
             //save new Note
             saveNote();
-        }else if(title.equals("camera")){
+        }else if(title.equals(getString(R.string.get_photo))){
             ((ActivityUtilityInterface)getActivity()).setSameApp(true);
             startCameraActivity();
         }
@@ -311,6 +311,7 @@ public class NoteDetailFragment extends Fragment implements UndoBarController.Un
 
                 }else{
                     toModifyNote = true;
+                    note.setmImage(imgCompressed);
                     ((NoteListActivity)getActivity()).saveNote(note);
                     Fragment noteLisFragment =  ((NoteListActivity)getActivity()).getmFragment();
                     ((NoteListFragment) noteLisFragment).getListView().postInvalidate();

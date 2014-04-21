@@ -139,5 +139,21 @@
     <string name="last_modified_data">Last Modified</string>
     <string name="no_title">No Name</string>
     <string name="no_desc">No Description</string>
+    <string name="secure_question">Security Question</string>
+    <string name="answer_question">Answer</string>
+    <string name="save_answer">Save</string>
+    <string name="title_security_question_dialog">Create Security Question</string>
+    <string name="retrieve_password"><u>Retrieve Password</u></string>
+    <string name="secure_question_saved">Secure Question saved</string>
+    <string name="set_retrieve_password_setting">Set Retrieve Password</string>
+    <string name="about_retrieve_password">Set a secure question to retrieve your password</string>
+    <string name="title_retrieve_password_dialog">Obtain Password</string>
+    <string name="response_text">Response:</string>
+    <string name="no_available_question">No available  question</string>
+    <string name="the_password_is">The password is</string>
+    <string name="response_incorrect">Response is incorrect</string>
+    <string name="get_password">Get password</string>
+    <string name="save_note">Save Note</string>
+    <string name="get_photo">Take photo</string>
 
 </resources>

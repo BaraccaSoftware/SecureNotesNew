@@ -118,7 +118,7 @@ containing a value of this type.
         public static final int ic_undobar_undo=0x7f020007;
         public static final int listview_back=0x7f020008;
         public static final int lockapp_background=0x7f020009;
-        public static final int rounded_border=0x7f02000a;
+        public static final int rounded_border_red =0x7f02000a;
         public static final int undobar=0x7f02000b;
         public static final int undobar_button=0x7f02000c;
         public static final int undobar_button_focused=0x7f02000d;

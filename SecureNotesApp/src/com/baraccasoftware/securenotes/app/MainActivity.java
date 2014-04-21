@@ -2,10 +2,12 @@ package com.baraccasoftware.securenotes.app;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
 
 import com.baraccasoftware.securenotes.object.ActivityUtilityInterface;
 import com.baraccasoftware.securenotes.object.PasswordPreference;
@@ -15,6 +17,8 @@ public class MainActivity extends Activity implements ActivityUtilityInterface{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+        getActionBar().hide();
         setContentView(R.layout.activity_main);
         setLayout();
     }
@@ -77,4 +81,10 @@ public class MainActivity extends Activity implements ActivityUtilityInterface{
         Log.i(TAG, toLog);
     }
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+
+    }
 }

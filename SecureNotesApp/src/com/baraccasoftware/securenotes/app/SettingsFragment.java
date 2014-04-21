@@ -1,6 +1,7 @@
 package com.baraccasoftware.securenotes.app;
 
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.preference.PreferenceFragment;
  */
 public class SettingsFragment extends PreferenceFragment {
     private static final String KEY_HINT_PREF = "hints_value" ;
+    public static final String SHOW_HINTS = "SHOW_HINTS";
     SettingsActivity mActivity;
 
     @Override
@@ -36,6 +38,21 @@ public class SettingsFragment extends PreferenceFragment {
 
     private void setPreferences(){
         addPreferencesFromResource(R.xml.settingsfile);
+
+        Preference setRetrievePassword = getPreferenceScreen().findPreference("retrieve_password");
+        setRetrievePassword.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                            //Set security question
+            // custom dialog
+            FragmentManager fm = getFragmentManager();
+            SecurityQuestionDialogFragment alert = new SecurityQuestionDialogFragment();
+            alert.setCancelable(true);
+            alert.show(fm, "Alert_Dialog");
+            return true;
+            }
+        });
+
         Preference openInfoB =  getPreferenceScreen().findPreference("infobaracca");
         openInfoB.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
@@ -65,6 +82,8 @@ public class SettingsFragment extends PreferenceFragment {
                 return true;
             }
         });
+
+
     }
 
 

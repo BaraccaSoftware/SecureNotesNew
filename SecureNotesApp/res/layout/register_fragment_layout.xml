@@ -11,8 +11,8 @@
     tools:context=".MainActivity" >
 
     <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
         android:id="@+id/imageView"
         android:background="@drawable/artwork"
         android:contentDescription="@string/about_bs"
@@ -25,9 +25,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPassword"
+        android:inputType="textPassword|textMultiLine|textNoSuggestions"
         android:layout_below="@+id/register_user_title"
-        android:layout_alignStart="@+id/editText_reins_password">
+        android:layout_alignLeft="@+id/register_user_title"
+        android:layout_alignStart="@+id/register_user_title">
         <requestFocus />
     </EditText>
 
@@ -58,7 +59,8 @@
         android:hint="@string/reins_password"
         android:inputType="textPassword"
         android:layout_below="@+id/editText_ins_password"
-        android:layout_alignStart="@+id/register_user_title" />
+        android:layout_alignLeft="@+id/editText_ins_password"
+        android:layout_alignStart="@+id/editText_ins_password" />
 
 
     <Button
@@ -67,7 +69,7 @@
         android:layout_height="wrap_content"
         android:text="@string/accedi"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/rounded_border"
+        android:background="@drawable/rounded_border_red"
         android:layout_centerHorizontal="true"  />
 
     <TextView

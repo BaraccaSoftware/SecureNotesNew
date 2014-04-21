@@ -39,6 +39,9 @@ import com.baraccasoftware.securenotes.object.Note;
 import com.baraccasoftware.securenotes.object.NoteUtility;
 import com.baraccasoftware.securenotes.object.PasswordPreference;
 import com.baraccasoftware.securenotes.widget.NoteAdapter;
+import com.espian.showcaseview.ShowcaseView;
+import com.espian.showcaseview.ShowcaseViews;
+
 
 import static com.baraccasoftware.securenotes.app.NoteDetailFragment.*;
 
@@ -68,6 +71,7 @@ public class NoteListActivity extends FragmentActivity
     public static final String TAG_NO_LOCKED_APP = "notlockedapp";
     public static final String INTENT_REFRESH_NOTE = "com.baraccasoftare.securenotes.NOTE_REFRESHED";
     public static final String REFRESH_NOTE_TAG = "refreshNote";
+    static final ShowcaseView.ConfigOptions co = new ShowcaseView.ConfigOptions();
 
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
@@ -163,9 +167,11 @@ public class NoteListActivity extends FragmentActivity
                     //nuova note
 
                     saveNote(note);
+                    ((NoteListFragment) mFragment).resetAdapterAfterSearch();
                 } else {
                     //nota da aggiornare
                     updateNote(note);
+                    ((NoteListFragment) mFragment).resetAdapterAfterSearch();
                 }
             }
         }
@@ -221,9 +227,19 @@ public class NoteListActivity extends FragmentActivity
                 }
             });
         }
- 
-        /** Setting an action listener */
 
+        final SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean show_hints  = settings.getBoolean(SettingsFragment.SHOW_HINTS, false);
+        if(show_hints) {
+            ShowcaseViews showcaseViews = new ShowcaseViews(this);
+            showcaseViews.addView(new ShowcaseViews.ItemViewProperties(R.id.action_add, R.string.tips_title_add_note, R.string.tips_add_note, ShowcaseView.ITEM_ACTION_ITEM));
+            //showcaseViews.addView(new ShowcaseViews.ItemViewProperties(R.id.action_add,R.string.tips_unlock_time_tile, R.string.tips_unlock,ShowcaseView.ITEM_ACTION_ITEM));
+            showcaseViews.show();
+
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putBoolean(SettingsFragment.SHOW_HINTS, false);
+            editor.commit();
+        }
         
         return super.onCreateOptionsMenu(menu);
     }
@@ -399,8 +415,16 @@ public class NoteListActivity extends FragmentActivity
         task.execute();
         mItemPosition = position;
 
+        int id = 0;
+        if(secondFragment instanceof NoteDetailFragment){
+            id = ((NoteDetailFragment)secondFragment).getIdNota();
+        }
+        else if(secondFragment != null){
 
-        if(mTwoPane && secondFragment != null && note.getmId() == ((NoteDetailFragment)secondFragment).getIdNota() ){
+            id = ((ShowNoteDetailFragment)secondFragment).getIdNota();
+        }
+
+        if(mTwoPane && secondFragment != null && note.getmId() == id ){
             log("to reload fragment");
             getSupportFragmentManager().beginTransaction().remove(secondFragment).commit();
             secondFragment = new NoteDetailFragment();

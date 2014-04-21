@@ -2,12 +2,16 @@ package com.baraccasoftware.securenotes.app;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,18 +37,36 @@ public class LogInFragment extends Fragment {
         mActivity = (MainActivity) activity;
     }
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.log_in_fragment_layout,container,false);
         
         TextView mainTitle = (TextView) view.findViewById(R.id.textView_appname2);
         UtilsClass.setCustomFontToTextView(mainTitle, getActivity().getAssets());
-        
+
+        TextView retrievePassword = (TextView) view.findViewById(R.id.retrieve_password_text);
+        retrievePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // custom dialog
+                FragmentManager fm = getFragmentManager();
+                RetrievePasswordDialogFragment alert = new RetrievePasswordDialogFragment();
+                alert.setCancelable(true);
+                alert.show(fm, "Alert_Dialog");
+            }
+        });
+
         
         TextView accessText = (TextView) view.findViewById(R.id.access_text_view);
+
         UtilsClass.setCustomFontToTextView(accessText, getActivity().getAssets());
         
-        ins_password = (TextView) view.findViewById(R.id.editText_password);
+        ins_password = (EditText) view.findViewById(R.id.editText_password);
+
+
+        ins_password.invalidate();
         enter = (Button) view.findViewById(R.id.button_accedi);
         enter.setOnClickListener(new View.OnClickListener() {
             @Override

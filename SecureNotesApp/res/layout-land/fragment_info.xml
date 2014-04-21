@@ -9,12 +9,13 @@
     tools:context=".MainActivity" >
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:id="@+id/imageView"
         android:background="@drawable/artwork"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@+id/textView_code"
+        android:layout_alignEnd="@+id/textView_code" />
 
 
     <TextView
@@ -22,8 +23,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name_2"
-        android:textSize="45dp"
-        android:layout_alignTop="@+id/imageView"
+        android:textSize="30sp"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <TextView
@@ -31,9 +32,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Version 1.0"
-        android:textSize="20dp"
-        android:layout_above="@+id/imageView"
-        android:layout_centerHorizontal="true" />
+        android:textSize="20sp"
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@+id/license"
+        android:layout_alignEnd="@+id/license" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -41,9 +43,9 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Apache license"
         android:id="@+id/license"
+        android:layout_marginTop="20dp"
         android:layout_below="@+id/textView_appname2"
-        android:layout_toLeftOf="@+id/textView_versione"
-        android:layout_marginRight="49dp" />
+        android:layout_toRightOf="@+id/textView3" />
 
     <TextView
         android:layout_width="match_parent"

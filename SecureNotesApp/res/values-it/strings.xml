@@ -134,6 +134,22 @@
     <string name="last_modified_data">Ultima Modifica</string>
     <string name="no_title">Nessun Titolo</string>
     <string name="no_desc">Nessuna Descrizione</string>
+    <string name="secure_question">Domanda di Sicurezza</string>
+    <string name="answer_question">Risposta</string>
+    <string name="save_answer">Salva</string>
+    <string name="title_security_question_dialog">Imposta la domanda di sicurezza</string>
+    <string name="retrieve_password"><u>Recupera Password</u></string>
+    <string name="secure_question_saved">Domanda di sicurezza salvata</string>
+    <string name="set_retrieve_password_setting">Imposta recupero password</string>
+    <string name="about_retrieve_password">Imposta una domanda di sicurezza per recuperare la tua password</string>
+    <string name="title_retrieve_password_dialog">Ottieni password</string>
+    <string name="response_text">Risposta:</string>
+    <string name="no_available_question">Nessuna domanda di sicurezza impostata</string>
+    <string name="the_password_is">La password e\'\</string>
+    <string name="response_incorrect">Response is incorrect</string>
+    <string name="get_password">Ottieni password</string>
+    <string name="save_note">Salva Nota</string>
+    <string name="get_photo">Scatta foto</string>
 
 
 </resources>

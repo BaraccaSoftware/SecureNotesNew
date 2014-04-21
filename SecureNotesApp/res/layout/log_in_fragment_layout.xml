@@ -55,8 +55,19 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/accedi"
-        android:background="@drawable/rounded_border"
+        android:background="@drawable/rounded_border_red"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/retrieve_password"
+        android:onClick="onClick"
+        android:clickable="true"
+        android:id="@+id/retrieve_password_text"
+        android:layout_below="@+id/editText_password"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

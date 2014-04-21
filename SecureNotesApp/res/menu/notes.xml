@@ -1,17 +1,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/action_add"
+        android:icon="@drawable/ic_action_new"
+        android:title="@string/add_value"
+        android:showAsAction="ifRoom|collapseActionView" />
     <item android:id="@+id/airport_menuRefresh"
-        android:icon="@drawable/ic_menu_refresh"
+        android:icon="@drawable/ic_action_refresh"
         android:title="@string/menuitem_refresh"
-        android:orderInCategory="1"
-        android:showAsAction="always" />
+        android:showAsAction="ifRoom|collapseActionView" />
 
-	<item android:id="@+id/action_add"
-          android:icon="@android:drawable/ic_menu_add"
-          android:title="@string/add_value"
-          android:showAsAction="ifRoom" />
+
 	<item
         android:id="@+id/search_action_bar_item"
-        android:icon="@android:drawable/ic_menu_search"
+        android:icon="@drawable/ic_action_search"
         android:title="@string/search_action_bar_label"
         android:showAsAction="ifRoom|collapseActionView"
         android:actionLayout="@layout/search_layout"

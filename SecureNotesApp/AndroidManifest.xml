@@ -3,7 +3,7 @@
     package="com.baraccasoftware.securenotes.app" >
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-sdk android:minSdkVersion="18" android:targetSdkVersion="18"/>
+    <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="18"/>
 
     <application
         android:allowBackup="true"
@@ -49,6 +49,8 @@
                 android:value=".SettingsActivity" />
         </activity>
         <activity android:name=".ShowNoteDetailFragment" />
+        <activity android:name=".SecurityQuestionDialogFragment" />
+        <activity android:name=".RetrievePasswordDialogFragment" />
     </application>
 
 </manifest>

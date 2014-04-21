@@ -11,14 +11,14 @@
     tools:context=".MainActivity" >
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:id="@+id/imageView"
         android:background="@drawable/artwork"
         android:contentDescription="@string/about_bs"
-        android:layout_above="@+id/button_accedi"
-        android:layout_alignParentEnd="true"
-        android:layout_toRightOf="@+id/textView_appname2" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <EditText
         android:id="@+id/editText_password"
@@ -27,31 +27,45 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword"
-        android:layout_marginBottom="30dp"
         android:layout_alignBottom="@+id/imageView"
+        android:layout_alignLeft="@+id/textView_appname2"
         android:layout_alignStart="@+id/textView_appname2">
         <requestFocus />
     </EditText>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/retrieve_password"
+        android:onClick="onClick"
+        android:clickable="true"
+        android:id="@+id/retrieve_password_text"
+        android:layout_below="@+id/editText_password"
+        android:layout_alignLeft="@+id/access_text_view"
+        android:layout_alignStart="@+id/access_text_view" />
 
     <TextView
         android:id="@+id/textView_appname2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name_2"
-        android:textSize="45sp"
+        android:textSize="30sp"
+        android:layout_marginLeft="37dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="30dp" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/access_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login_text"
-        android:textSize="45sp"
-        android:layout_marginRight="30dp"
+        android:textSize="30sp"
+        android:layout_marginRight="50dp"
         android:layout_below="@+id/textView_appname2"
-        android:layout_alignEnd="@+id/editText_password" />
+        android:layout_alignRight="@+id/textView_appname2"
+        android:layout_alignEnd="@+id/textView_appname2" />
 
 
     <Button
@@ -59,7 +73,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/accedi"
-        android:background="@drawable/rounded_border"
+        android:background="@drawable/rounded_border_red"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
