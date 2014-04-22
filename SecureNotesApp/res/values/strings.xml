@@ -7,9 +7,9 @@
     <string name="baracca_software">Baracca Software</string>
 
     <!-- Stringhe per la iniziale activity -->
-    <string name="app_name_2">Secure Notes</string>
+    <string name="app_name_2">Secure <br></br>Notes</string>
     <string name="disabled">Disabled</string>
-    <string name="accedi">Enter</string>
+    <string name="accedi">Log In</string>
     <string name="annulla">Cancel</string>
     <string name="signin">Sign in</string>
     <string name="no_more_input">You Have been entered too many wrong passwords: access denied for 30 seconds</string>

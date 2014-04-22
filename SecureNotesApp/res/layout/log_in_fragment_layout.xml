@@ -16,10 +16,11 @@
         android:id="@+id/imageView"
         android:background="@drawable/artwork"
         android:contentDescription="@string/about_bs"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/access_text_view"
         android:layout_centerHorizontal="true" />
 
     <EditText
+        android:background="@drawable/apptheme_edit_text_holo_light"
         android:id="@+id/editText_password"
         android:hint="@string/hint_edtx"
         android:layout_width="wrap_content"
@@ -27,7 +28,8 @@
         android:ems="10"
         android:inputType="textPassword"
         android:layout_below="@+id/imageView"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="27dp">
         <requestFocus />
     </EditText>
 

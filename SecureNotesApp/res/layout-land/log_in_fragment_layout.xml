@@ -22,7 +22,8 @@
 
     <EditText
         android:id="@+id/editText_password"
-        android:hint="@string/hint_edtx"
+        android:background="@drawable/rounded_editext"
+        android:hint=" password.."
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -30,7 +31,6 @@
         android:layout_alignBottom="@+id/imageView"
         android:layout_alignLeft="@+id/textView_appname2"
         android:layout_alignStart="@+id/textView_appname2">
-        <requestFocus />
     </EditText>
 
     <TextView
