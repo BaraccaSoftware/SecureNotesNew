@@ -77,6 +77,8 @@ public class NoteDetailFragment extends Fragment implements UndoBarController.Un
     private int notePosition;
 
     public static String pathFile;
+    private ImageView mImageViewBackground;
+
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -115,6 +117,7 @@ public class NoteDetailFragment extends Fragment implements UndoBarController.Un
         mTitle = (EditText) rootView.findViewById(R.id.editText_titolo_addnote);
         mText = (EditText) rootView.findViewById(R.id.editText_text_addnote);
         mDate = (TextView) rootView.findViewById(R.id.textView_data_addnote);
+        mImageViewBackground = (ImageView) rootView.findViewById(R.id.imageView);
         mImageView = (ImageView) rootView.findViewById(R.id.imageView1_addnote);
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
@@ -142,6 +145,7 @@ public class NoteDetailFragment extends Fragment implements UndoBarController.Un
                     Intent intent = new Intent();
                     intent.putExtra(IMG_COMPRESSED,imgCompressed);
                     imgCompressed = new byte[1];
+                    mImageViewBackground.setVisibility(View.VISIBLE);
                     muUndoBarController.showUndoBar(false,getString(R.string.img_deleted),intent);
                 }
             }
@@ -193,6 +197,7 @@ public class NoteDetailFragment extends Fragment implements UndoBarController.Un
         }else if(title.equals(getString(R.string.get_photo))){
             ((ActivityUtilityInterface)getActivity()).setSameApp(true);
             startCameraActivity();
+            mImageViewBackground.setVisibility(View.GONE);
         }
         return super.onOptionsItemSelected(item);
     }
