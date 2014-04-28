@@ -182,10 +182,10 @@ public class NoteDetailFragment extends Fragment implements UndoBarController.Un
         super.onCreateOptionsMenu(menu, inflater);
         MenuItem addPhotoMenuItem = menu.add(getString(R.string.get_photo));
         addPhotoMenuItem.setIcon(R.drawable.ic_action_camera);
-        addPhotoMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+        addPhotoMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
         MenuItem saveMenuItem = menu.add(getString(R.string.save_note));
         saveMenuItem.setIcon(R.drawable.ic_action_accept);
-        saveMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+        saveMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
     }
 
     @Override

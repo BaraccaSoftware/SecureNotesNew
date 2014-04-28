@@ -222,6 +222,7 @@ public class NoteListActivity extends FragmentActivity
                 @Override
                 public void afterTextChanged(Editable arg0) {
                     // Call searchNotes method
+                    if(!passwordPreference.isAppLocked())
                     ((NoteListFragment) mFragment).searchNotes(arg0.toString());
 
                 }
@@ -249,43 +250,47 @@ public class NoteListActivity extends FragmentActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        //TODO RICONTROLLARE PER RISOLVERE IL BUG DELLA RICERCA
-        if(id == R.id.airport_menuRefresh){
-            NoteListFragment noteListFragment = ((NoteListFragment)mFragment);
-            NoteAdapter adp = (NoteAdapter) noteListFragment.getListAdapter();
-            adp.notifyDataSetChanged();
-            ((NoteListFragment) mFragment).resetAdapterAfterSearch();
-        }
-        if (id == R.id.action_settings) {
-            startActivity(new Intent(this,SettingsActivity.class));
-            setSameApp(true);
-            return true;
-        }else if(id == R.id.action_add){
-            showDetailNote(null,true);
-            setSameApp(true);
-            return true;
-        }else if(id == R.id.action_export){
-            if(DAO.getInstance(this).isExternalStorageReadable()){
-                //export notes
-                //new ExportNotesTask().execute();
-                ExportDialogFragment frgm = new ExportDialogFragment();
-                frgm.show(getFragmentManager(),"export notes");
-                return true;
-            }else{
-                Toast.makeText(getApplicationContext(),R.string.error_export_db,Toast.LENGTH_LONG).show();
+        if(!passwordPreference.isAppLocked()) {
+            int id = item.getItemId();
+            //TODO RICONTROLLARE PER RISOLVERE IL BUG DELLA RICERCA
+            if (id == R.id.airport_menuRefresh) {
+                if (!passwordPreference.isAppLocked()) {
+                    NoteListFragment noteListFragment = ((NoteListFragment) mFragment);
+                    NoteAdapter adp = (NoteAdapter) noteListFragment.getListAdapter();
+                    adp.notifyDataSetChanged();
+                    ((NoteListFragment) mFragment).resetAdapterAfterSearch();
+                }
             }
-            return false;
-        }else if(id == R.id.action_import){
-            if(DAO.getInstance(this).isExternalStorageReadable()){
-                //export notes
-                ImportDialogFragment fragment = new ImportDialogFragment();
-                fragment.show(getFragmentManager(),"import notes");
+            if (id == R.id.action_settings) {
+                startActivity(new Intent(this, SettingsActivity.class));
+                setSameApp(true);
                 return true;
-            }else{
-                Toast.makeText(getApplicationContext(),R.string.error_export_db,Toast.LENGTH_LONG).show();
+            } else if (id == R.id.action_add) {
+                showDetailNote(null, true);
+                setSameApp(true);
+                return true;
+            } else if (id == R.id.action_export) {
+                if (DAO.getInstance(this).isExternalStorageReadable()) {
+                    //export notes
+                    //new ExportNotesTask().execute();
+                    ExportDialogFragment frgm = new ExportDialogFragment();
+                    frgm.show(getFragmentManager(), "export notes");
+                    return true;
+                } else {
+                    Toast.makeText(getApplicationContext(), R.string.error_export_db, Toast.LENGTH_LONG).show();
+                }
+                return false;
+            } else if (id == R.id.action_import) {
+                if (DAO.getInstance(this).isExternalStorageReadable()) {
+                    //export notes
+                    ImportDialogFragment fragment = new ImportDialogFragment();
+                    fragment.show(getFragmentManager(), "import notes");
+                    return true;
+                } else {
+                    Toast.makeText(getApplicationContext(), R.string.error_export_db, Toast.LENGTH_LONG).show();
+                }
+                return false;
             }
-            return false;
         }
         return super.onOptionsItemSelected(item);
     }

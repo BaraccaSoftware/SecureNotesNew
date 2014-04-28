@@ -28,8 +28,8 @@
         android:background="@drawable/artwork"
         android:contentDescription="@string/about_bs"
         android:layout_below="@+id/access_text_view"
-        android:layout_alignLeft="@+id/textView_appname2"
-        android:layout_alignStart="@+id/textView_appname2" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="49dp" />
 
     <TextView
         android:id="@+id/textView_appname2"
@@ -39,7 +39,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="26dp"
         android:text="@string/app_name_2"
-        android:textSize="50sp" />
+        android:textSize="50sp"
+        android:gravity="center" />
 
     <TextView
         android:id="@+id/access_text_view"
@@ -48,7 +49,8 @@
         android:text="@string/login_text"
         android:textSize="50sp"
         android:layout_below="@+id/textView_appname2"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:gravity="center" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -60,7 +62,8 @@
         android:textSize="20sp"
         android:layout_marginTop="47dp"
         android:layout_below="@+id/editText_password"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:gravity="center" />
 
     <EditText
 
@@ -69,7 +72,8 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/editText_password"
-        android:layout_marginTop="99dp"
+        android:layout_marginTop="53dp"
+        android:gravity="center"
         android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true" />
 

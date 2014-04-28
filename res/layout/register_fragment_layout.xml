@@ -26,10 +26,10 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword|textMultiLine|textNoSuggestions"
+        android:gravity="center"
+        android:layout_marginTop="45dp"
         android:layout_below="@+id/register_user_title"
-        android:layout_alignLeft="@+id/register_user_title"
-        android:layout_alignStart="@+id/register_user_title"
-        android:gravity="center">
+        android:layout_centerHorizontal="true">
         <requestFocus />
     </EditText>
 
@@ -61,10 +61,10 @@
         android:ems="10"
         android:hint="@string/reins_password"
         android:inputType="textPassword"
+        android:gravity="center"
         android:layout_below="@+id/editText_ins_password"
         android:layout_alignLeft="@+id/editText_ins_password"
-        android:layout_alignStart="@+id/editText_ins_password"
-        android:gravity="center" />
+        android:layout_alignStart="@+id/editText_ins_password" />
 
 
     <Button
