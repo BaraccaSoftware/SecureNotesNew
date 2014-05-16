@@ -150,7 +150,7 @@ public class NoteListFragment extends ListFragment {
             setActivatedPosition(savedInstanceState.getInt(STATE_ACTIVATED_POSITION));
         }
         setDeleteTouchListener();
-        getActivity().registerForContextMenu(getListView());
+        registerForContextMenu(getListView());
         getListView().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             public boolean onItemLongClick(AdapterView<?> parent, View v, int position, long id) {
                 //removeNote(position);
@@ -218,7 +218,7 @@ public class NoteListFragment extends ListFragment {
     public boolean onContextItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_delete_note_context_menu:
-                //delete sms
+                //delete note
                 ConfirmDeleteNoteDialog dialog = new ConfirmDeleteNoteDialog(positionNoteLongSelected);
                 dialog.show(getActivity().getFragmentManager(), "SureDeleteImg");
                 return true;
