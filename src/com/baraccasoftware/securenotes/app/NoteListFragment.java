@@ -13,9 +13,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -61,6 +63,8 @@ public class NoteListFragment extends ListFragment {
      * adapter
      */
     private NoteAdapter mAdapter;
+
+    private int positionNoteLongSelected=-1;
 
     /**
      * A callback interface that all activities containing this fragment must
@@ -146,13 +150,15 @@ public class NoteListFragment extends ListFragment {
             setActivatedPosition(savedInstanceState.getInt(STATE_ACTIVATED_POSITION));
         }
         setDeleteTouchListener();
-//        getListView().setLongClickable(true);
-//        getListView().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-//            public boolean onItemLongClick(AdapterView<?> parent, View v, int position, long id) {
-//                removeNote(position);
-//                return true;
-//            }
-//        });
+        getActivity().registerForContextMenu(getListView());
+        getListView().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            public boolean onItemLongClick(AdapterView<?> parent, View v, int position, long id) {
+                //removeNote(position);
+                positionNoteLongSelected = position;
+                getActivity().openContextMenu(getListView());
+                return true;
+            }
+        });
     }
 
     @Override
@@ -199,6 +205,29 @@ public class NoteListFragment extends ListFragment {
     public void onResume() {
         super.onResume();
 
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getActivity().getMenuInflater();
+        inflater.inflate(R.menu.context_menu_notes, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_delete_note_context_menu:
+                //delete sms
+                ConfirmDeleteNoteDialog dialog = new ConfirmDeleteNoteDialog(positionNoteLongSelected);
+                dialog.show(getActivity().getFragmentManager(), "SureDeleteImg");
+                return true;
+
+            default:
+                //mConversationSelectedFromContextMenu = null;
+                positionNoteLongSelected = -1;
+                return super.onContextItemSelected(item);
+        }
     }
 
     /**

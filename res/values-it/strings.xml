@@ -46,6 +46,7 @@
     <string name="error_import_note">Errore nell\'importare le note. Ricontrolla la Password. </string>
     <string name="sure_delete_note">Sicuro di voler eliminare la Nota? </string>
     <string name="empty_passwords">Password vuote</string>
+    <string name="delete_note_string">Elimina Nota</string>
 
     <!-- stringhe per activity preferences -->
     <string name="title_activity_settings"> Preferenze</string>
